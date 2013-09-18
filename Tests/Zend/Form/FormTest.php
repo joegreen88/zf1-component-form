@@ -1,7 +1,7 @@
 <?php
-namespace Tests\Zend\Validate;
+namespace Tests\Zend\Form;
 
-class AclTest extends \Tests\TestCase
+class FormTest extends \Tests\TestCase
 {
     protected $classes = array(
         '\Zend_Form',
