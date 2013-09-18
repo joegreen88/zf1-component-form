@@ -63,4 +63,18 @@ class AclTest extends \Tests\TestCase
             $this->assertTrue(class_exists($class) || interface_exists($class));
         }
     }
+
+    public function testCanMakeBasicForm()
+    {
+        $input1 = new \Zend_Form_Element_Text('input1');
+        $v1 = new \Zend_Validate_Alpha();
+        $v1->setMessage("This field must only contain letters");
+
+        $form = new \Zend_Form;
+        $form->clearDecorators()->addElement($input1->clearDecorators()->addValidator($v1));
+        $this->assertSame(1, $form->count());
+
+        $this->assertFalse($form->isValid(array('input1'=>'rdfsdf344')));
+        $this->assertSame("This field must only contain letters", current($form->getElement('input1')->getMessages()));
+    }
 }
