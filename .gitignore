@@ -2,3 +2,4 @@ vendor/**
 Tests/logs
 Tests/logs/**
 .idea/**
+composer.lock
